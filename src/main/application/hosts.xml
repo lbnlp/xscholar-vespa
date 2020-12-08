@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 Yahoo Holdings. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
 <hosts>
-  <host name="db-admin0">
+  <host name="db-admin0.vespa.svc.development.local">
     <alias>admin0</alias>
   </host>
 
-  <host name="db-stateless0">
+  <host name="db-stateless0.vespa.svc.development.local">
     <alias>stateless0</alias>
   </host>
 
-  <host name="db-stateless1">
+  <host name="db-stateless1.vespa.svc.development.local">
     <alias>stateless1</alias>
   </host>
 
-  <host name="db-content0">
+  <host name="db-content0.vespa.svc.development.local">
     <alias>content0</alias>
   </host>
 
-  <host name="db-content1">
+  <host name="db-content1.vespa.svc.development.local">
     <alias>content1</alias>
   </host>
 </hosts>
