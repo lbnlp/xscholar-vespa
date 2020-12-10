@@ -13,18 +13,18 @@
     <search/>
     <nodes>
       <node hostalias="stateless0"/>
-      <node hostalias="stateless1"/>
     </nodes>
   </container>
 
   <content id="xscholar" version="1.0">
-    <redundancy>2</redundancy>
+    <redundancy>1</redundancy>
     <documents>
       <document type="doc" mode="index"/>
     </documents>
     <nodes>
       <node hostalias="content0" distribution-key="0"/>
       <node hostalias="content1" distribution-key="1"/>
+      <node hostalias="content2" distribution-key="2"/>
     </nodes>
   </content>
 </services>
