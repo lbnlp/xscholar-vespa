@@ -20,9 +20,8 @@ schema doc {
             index: enable-bm25
         }
 
-        field authors type array<author> {
-            indexing: summary
-            struct-field name { indexing: index }
+        field authors type array<string> {
+            indexing: summary|attribute
         }
 
         field journal type string {
