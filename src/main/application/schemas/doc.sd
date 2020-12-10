@@ -96,7 +96,7 @@ schema doc {
             bolding: on
             full
             }
-        summary authors type array<author> {source: authors}
+        summary authors type array<string> {source: authors}
         summary abstract type string {
             source: abstract
             bolding: on
