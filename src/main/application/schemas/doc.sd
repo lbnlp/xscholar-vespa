@@ -108,14 +108,14 @@ schema doc {
         summary doi type string {source: doi}
         summary link type string {source:link}
         summary year type int {source: year}
-        summary materials type type array<string> {source: materials}
-        summary materials_clean type type array<string> {source: phase_labels}
-        summary characterization_methods type type array<string> {source: characterization_methods}
-        summary properties type type array<string> {source: properties}
-        summary synthesis_methods type type array<string> {source: synthesis_methods}
-        summary applications type type array<string> {source: applications}
-        summary descriptors type type array<string> {source: descriptors}
-        summary phase_labels type type array<string> {source: phase_labels}
+        summary materials type array<string> {source: materials}
+        summary materials_clean type array<string> {source: phase_labels}
+        summary characterization_methods type array<string> {source: characterization_methods}
+        summary properties type array<string> {source: properties}
+        summary synthesis_methods type array<string> {source: synthesis_methods}
+        summary applications type array<string> {source: applications}
+        summary descriptors type array<string> {source: descriptors}
+        summary phase_labels type array<string> {source: phase_labels}
 
   }
 
