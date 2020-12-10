@@ -1,0 +1,140 @@
+# Copyright 2019 Oath Inc. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root.
+
+schema doc {
+
+    document doc {
+
+        field id type string {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field doi type string {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field title type string {
+            bolding: true
+            indexing: summary|index
+            index: enable-bm25
+        }
+
+        field authors type array<author> {
+            indexing: summary
+            struct-field name { indexing: index }
+        }
+
+        field journal type string {
+            indexing: summary|attribute
+        }
+
+        field timestamp type long {
+            indexing: summary|attribute
+        }
+
+        field year type int {
+            indexing: summary|attribute
+        }
+
+        field abstract type string {
+            bolding: true
+            indexing: summary|index
+            index: enable-bm25
+        }
+
+        field link type string {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field issn type string
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field materials type array<string> {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field characterization_methods type array<string> {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field properties type array<string> {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field synthesis_methods type array<string> {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field applications type array<string> {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field descriptors type array<string> {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+        field phase_labels type array<string> {
+            indexing: summary|attribute
+            attribute:fast-search
+        }
+
+    }
+
+    fieldset default {
+        fields: title, abstract
+    }
+
+    fieldset all {
+        fields: title, abstract, authors, journal
+    }
+
+    document-summary short {
+        from-disk
+        summary title type string {
+            source: title
+            bolding: on
+            full
+            }
+        summary authors type array<author> {source: authors}
+        summary abstract type string {
+            source: abstract
+            bolding: on
+            full
+        }
+        summary journal type string {source: journal}
+        summary timestamp type long {source: timestamp}
+        summary doi type string {source: doi}
+        summary link type string {source:link}
+        summary year type int {source: year}
+        summary materials type type array<string> {source: materials}
+        summary characterization_methods type type array<string> {source: characterization_methods}
+        summary properties type type array<string> {source: properties}
+        summary synthesis_methods type type array<string> {source: synthesis_methods}
+        summary applications type type array<string> {source: applications}
+        summary descriptors type type array<string> {source: descriptors}
+        summary phase_labels type type array<string> {source: phase_labels}
+
+  }
+
+    rank-profile freshness inherits default {
+        first-phase {
+            expression: attribute(timestamp)
+        }
+    }
+
+    rank-profile default inherits default {
+        first-phase {
+          expression: bm25(title) + bm25(abstract)
+    }
+  }
+}
