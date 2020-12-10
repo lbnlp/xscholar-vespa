@@ -48,44 +48,36 @@ schema doc {
             attribute:fast-search
         }
 
-        field issn type string
-            indexing: summary|attribute
-            attribute:fast-search
-        }
-
         field materials type array<string> {
             indexing: summary|attribute
-            attribute:fast-search
+        }
+
+        field materials_clean type array<string> {
+            indexing: summary|attribute
         }
 
         field characterization_methods type array<string> {
             indexing: summary|attribute
-            attribute:fast-search
         }
 
         field properties type array<string> {
             indexing: summary|attribute
-            attribute:fast-search
         }
 
         field synthesis_methods type array<string> {
             indexing: summary|attribute
-            attribute:fast-search
         }
 
         field applications type array<string> {
             indexing: summary|attribute
-            attribute:fast-search
         }
 
         field descriptors type array<string> {
             indexing: summary|attribute
-            attribute:fast-search
         }
 
         field phase_labels type array<string> {
             indexing: summary|attribute
-            attribute:fast-search
         }
 
     }
@@ -117,6 +109,7 @@ schema doc {
         summary link type string {source:link}
         summary year type int {source: year}
         summary materials type type array<string> {source: materials}
+        summary materials_clean type type array<string> {source: phase_labels}
         summary characterization_methods type type array<string> {source: characterization_methods}
         summary properties type type array<string> {source: properties}
         summary synthesis_methods type type array<string> {source: synthesis_methods}
