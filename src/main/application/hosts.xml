@@ -9,10 +9,6 @@
     <alias>stateless0</alias>
   </host>
 
-  <host name="db-stateless1">
-    <alias>stateless1</alias>
-  </host>
-
   <host name="db-content0">
     <alias>content0</alias>
   </host>
@@ -20,5 +16,10 @@
   <host name="db-content1">
     <alias>content1</alias>
   </host>
+
+  <host name="db-content2">
+    <alias>content2</alias>
+  </host>
+  
 </hosts>
 
