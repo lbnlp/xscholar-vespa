@@ -16,7 +16,7 @@ Set up this node to use the docker image at `registry.nersc.gov/m3624/app-linux:
 Mount a CFS directory you want to use as a data transfer directory at `/cfs` and leave the sub-path in the volume empty. 
 
 ### db-admin0 configuration
-Set up this node to use the docker image at `vespaengine/vespa`. Under "Show advanced options > Networking", set the container's hostname to `db-admin0`. Set the `VESPA_CONFIGSERVERS` environment variable to the hostname of this service you just set, e.g. `db-admin0'. Make sure the "entrypoint" and "command" parameters under "Command" are empty. This will start both configserver and services on this node. Add the NFS volume you created during the db-admin0 configuration under "Volumes" and mount it at two directories:
+Set up this node to use the docker image at `vespaengine/vespa`. Under "Show advanced options > Networking", set the container's hostname to `db-admin0`. Set the `VESPA_CONFIGSERVERS` environment variable to the hostname of this service you just set, e.g. `db-admin0`. Make sure the "entrypoint" and "command" parameters under "Command" are empty. This will start both configserver and services on this node. Add the NFS volume you created during the db-admin0 configuration under "Volumes" and mount it at two directories:
 * `/opt/vespa/var` to `admin0/vespa/var`
 * `/opt/vespa/logs` to `admin0/vespa/logs`
 
