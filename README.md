@@ -12,6 +12,7 @@ For this stack we will need 4 servies:
 ### app-linux configuration
 Set up this node to use the docker image at `registry.nersc.gov/m3624/app-linux:<MOST RECENT TAG>`. This image is a basic linux image with tools you might need, including git, curl, vim, etc. There is no need to configure any other parameters for this service. Create a new NFS volume and name it db-xscholar (e.g. new peristant volume). Mount it as:
 * `/nfs` to `data`
+
 Mount a CFS directory you want to use as a data transfer directory at `/cfs` and leave the sub-path in the volume empty. 
 
 ### db-admin0 configuration
