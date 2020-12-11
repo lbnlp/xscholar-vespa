@@ -13,10 +13,10 @@ For this stack we will need 4 servies:
 Set up this node to use the docker image at `registry.nersc.gov/m3624/app-linux:<MOST RECENT TAG>`. This image is a basic linux image with tools you might need, including git, curl, vim, etc. There is no need to configure any other parameters for this service. Create a new NFS volume and name it db-xscholar (e.g. new peristant volume). Mount it as:
 * `/nfs` to `data`
 
-Mount a CFS directory you want to use as a data transfer directory at `/cfs` and leave the sub-path in the volume empty. 
+Mount a CFS directory you want to use as a data transfer directory at `/cfs` and leave the sub-path in the volume empty. **Ensure that the "read-only" box is checked.** 
 
 ### db-admin0 configuration
-Set up this node to use the docker image at `vespaengine/vespa`. Under "Show advanced options > Networking", set the container's hostname to `db-admin0`. Set the `VESPA_CONFIGSERVERS` environment variable to the hostname of this service you just set, e.g. `db-admin0'. Make sure the "entrypoint" and "command" parameters under "Command" are empty. This will start both configserver and services on this node. Add the NFS volume you created during the db-admin0 configuration under "Volumes" and mount it at two directories:
+Set up this node to use the docker image at `vespaengine/vespa`. Under "Show advanced options > Networking", set the container's hostname to `db-admin0`. Set the `VESPA_CONFIGSERVERS` environment variable to the hostname of this service you just set, e.g. `db-admin0`. Make sure the "entrypoint" and "command" parameters under "Command" are empty. This will start both configserver and services on this node. Add the NFS volume you created during the db-admin0 configuration under "Volumes" and mount it at two directories:
 * `/opt/vespa/var` to `admin0/vespa/var`
 * `/opt/vespa/logs` to `admin0/vespa/logs`
 
@@ -61,7 +61,7 @@ If your application is properly configured, you should recieve a `200 OK` respon
 
 ## Feeding data to Vespa
 (note, this procedure will change in coming weeks and all data feeding will take place on the app-linux node.) 
-You can feed data to your new Vespa DB thorough the feeding API. Create a json file in which each line is a document to be fed into the database. See [examples/data/feed-file.json](https://github.com/lbnlp/xscholar-vespa) for an example feed file. Copy this feed file to your transfer directory on the NERSC community file system, and use the app-linux node to copy it to the NFS data directory. On the db-stateless0 node, run the following: 
+You can feed data to your new Vespa DB thorough the feeding API. Create a json file in which each line is a document to be fed into the database. See [examples/data/feed-file.json](https://github.com/lbnlp/xscholar-vespa/blob/main/examples/data/feed-file.json) for an example feed file. Copy this feed file to your transfer directory on the NERSC community file system, and use the app-linux node to copy it to the NFS data directory. On the db-stateless0 node, run the following: 
 
 ```
 $ java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar \
