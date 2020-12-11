@@ -61,7 +61,7 @@ If your application is properly configured, you should recieve a `200 OK` respon
 
 ## Feeding data to Vespa
 (note, this procedure will change in coming weeks and all data feeding will take place on the app-linux node.) 
-You can feed data to your new Vespa DB thorough the feeding API. Create a json file in which each line is a document to be fed into the database. See [examples/data/feed-file.json](https://github.com/lbnlp/xscholar-vespa) for an example feed file. Copy this feed file to your transfer directory on the NERSC community file system, and use the app-linux node to copy it to the NFS data directory. On the db-stateless0 node, run the following: 
+You can feed data to your new Vespa DB thorough the feeding API. Create a json file in which each line is a document to be fed into the database. See [examples/data/feed-file.json](https://github.com/lbnlp/xscholar-vespa/blob/main/examples/data/feed-file.json) for an example feed file. Copy this feed file to your transfer directory on the NERSC community file system, and use the app-linux node to copy it to the NFS data directory. On the db-stateless0 node, run the following: 
 
 ```
 $ java -jar /opt/vespa/lib/jars/vespa-http-client-jar-with-dependencies.jar \
