@@ -13,7 +13,7 @@ For this stack we will need 4 servies:
 Set up this node to use the docker image at `registry.nersc.gov/m3624/app-linux:<MOST RECENT TAG>`. This image is a basic linux image with tools you might need, including git, curl, vim, etc. There is no need to configure any other parameters for this service. Create a new NFS volume and name it db-xscholar (e.g. new peristant volume). Mount it as:
 * `/nfs` to `data`
 
-Mount a CFS directory you want to use as a data transfer directory at `/cfs` and leave the sub-path in the volume empty. 
+Mount a CFS directory you want to use as a data transfer directory at `/cfs` and leave the sub-path in the volume empty. **Ensure that the "read-only" box is checked.** 
 
 ### db-admin0 configuration
 Set up this node to use the docker image at `vespaengine/vespa`. Under "Show advanced options > Networking", set the container's hostname to `db-admin0`. Set the `VESPA_CONFIGSERVERS` environment variable to the hostname of this service you just set, e.g. `db-admin0`. Make sure the "entrypoint" and "command" parameters under "Command" are empty. This will start both configserver and services on this node. Add the NFS volume you created during the db-admin0 configuration under "Volumes" and mount it at two directories:
