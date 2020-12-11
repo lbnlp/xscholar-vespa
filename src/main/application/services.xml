@@ -23,8 +23,6 @@
     </documents>
     <nodes>
       <node hostalias="content0" distribution-key="0"/>
-      <node hostalias="content1" distribution-key="1"/>
-      <node hostalias="content2" distribution-key="2"/>
     </nodes>
   </content>
 </services>

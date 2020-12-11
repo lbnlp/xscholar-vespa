@@ -39,7 +39,10 @@ with open("feed-file-temp.json", "w") as file:
 
         delkeys = []
 
-        entry["id"] = str(entry["_id"])
+        if isinstance(entry["authors"], str):
+            entry["authors"] = [entry["authors"]]
+
+        id = str(entry["_id"])
         ids.append(entry["_id"])
         delkeys.append("_id")
 
@@ -58,9 +61,15 @@ with open("feed-file-temp.json", "w") as file:
 
         entry["year"] = str(entry["year"])
 
+        # entry["journal"] = db.entries.find_one({"doi": entry["doi"]}).get("journal", "")
+        # if isinstance(entry["journal"], list):
+        #     entry["journal"] = entry["journal"][0]
+        entry["journal"] = "Journal Placeholder"
+
         for key in delkeys:
             del entry[key]
 
+        entry = {"put": f"id:xscholar:doc::{id}", "fields": entry}
         file.write(json.dumps(entry))
         file.write("\n")
 

@@ -47,38 +47,6 @@ schema doc {
             attribute:fast-search
         }
 
-        field materials type array<string> {
-            indexing: summary|attribute
-        }
-
-        field materials_clean type array<string> {
-            indexing: summary|attribute
-        }
-
-        field characterization_methods type array<string> {
-            indexing: summary|attribute
-        }
-
-        field properties type array<string> {
-            indexing: summary|attribute
-        }
-
-        field synthesis_methods type array<string> {
-            indexing: summary|attribute
-        }
-
-        field applications type array<string> {
-            indexing: summary|attribute
-        }
-
-        field descriptors type array<string> {
-            indexing: summary|attribute
-        }
-
-        field phase_labels type array<string> {
-            indexing: summary|attribute
-        }
-
     }
 
     fieldset default {
@@ -107,14 +75,6 @@ schema doc {
         summary doi type string {source: doi}
         summary link type string {source:link}
         summary year type int {source: year}
-        summary materials type array<string> {source: materials}
-        summary materials_clean type array<string> {source: phase_labels}
-        summary characterization_methods type array<string> {source: characterization_methods}
-        summary properties type array<string> {source: properties}
-        summary synthesis_methods type array<string> {source: synthesis_methods}
-        summary applications type array<string> {source: applications}
-        summary descriptors type array<string> {source: descriptors}
-        summary phase_labels type array<string> {source: phase_labels}
 
   }
 
