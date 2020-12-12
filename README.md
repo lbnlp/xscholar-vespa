@@ -40,24 +40,7 @@ For redundency/performance you can increase the number of content nodes (e.g. db
 
 
 ## Starting up the Vespa cluster
-For now, you will need to manually start up the Vespa cluster (this will be automated soon in the entrypoint script.) Execute a shell on the db-admin0 node, set the `VESPA_HOME` environment variable to /opt/vespa and add it to the `PATH`. 
-
-``` 
-$ export VESPA_HOME=/opt/vespa; export PATH=$PATH:$VESPA_HOME/bin
-```
-
-Clone this repository onto the node and navigate to the new directory. 
-```
-$ git clone https://github.com/lbnlp/xscholar-vespa.git
-$ cd xscholar-vespa
-```
-
-Finally, deploy the vespa application. 
-```
-$ vespa-deploy prepare src/main/application && vespa-deploy activate
-```
-
-You can verify the service is working by querying the db-stateless0 node for the application's status. 
+The Vespa application should automatically deploy. You can verify the service is working by querying the db-stateless0 node for the application's status. 
 ```
 $ curl --head http://db-stateless0:8080/ApplicationStatus
 ```
